@@ -12,7 +12,7 @@ const AddUser = (props) => {
     const userData = {
       name: enteredUsername,
       age: enteredAge,
-      id: Math.random(),
+      id: Math.random().toString(),
     };
 
     if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
@@ -23,11 +23,10 @@ const AddUser = (props) => {
       return;
     }
 
-    console.log(enteredUsername, enteredAge);
+    props.onAddUser(userData);
+
     setEnteredUsername("");
     setEnteredAge("");
-
-    props.onUserSubmit(userData);
   };
 
   const usernameChangeHandler = (e) => {
